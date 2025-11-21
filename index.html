@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App finance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="display_none.css">
+</head>
+
+<body>
+    <div class="fundo_animação"></div>
+    <main>
+        <section data-view="dash_bord" class="view is-active dash_bord">
+            <h1>dash bord</h1>
+            <div class="dados">
+                <div class="elemento_dados">
+                    <p>total de entrada: R$:0,00</p>
+                </div>
+                <div class="elemento_dados">
+                    <p>total de saída: R$:0,00</p>
+                </div>
+                <div class="elemento_dados">
+                    <p>saldo: R$:0,00</p>
+                </div>
+                <div class="elemento_dados">
+                    <p>total investido: R$:0,00</p>
+                </div>
+            </div>
+            <div class="grafico">
+                <select name="grafico_data">
+                    <option value="mes" selected>MÊS</option>
+                    <option value="ano">ANO</option>
+                </select>
+            </div>
+        </section>
+        <section data-view="menu" class="view">
+            <header>
+            <div class="menuzinho">
+                <h1>Menu</h1>
+                <select name="select_menu">
+                    <option value="lancamentos" selected>Lançamentos</option>
+                    <option value="extras">Extras</option>
+                    <option value="assinaturas">Assinaturas</option>
+                </select>
+            </div>
+            </header>
+            <section data-menu-view="lancamentos" class="menu-view is-active">
+                Lançamentos
+            </section>
+            <section data-menu-view="extras" class="menu-view">
+                extras
+            </section>
+            <section data-menu-view="assinaturas" class="menu-view">
+                Assinaturas
+            </section>
+        </section>
+    </main>
+    <footer>
+        <nav>
+            <ul>
+                <li><button type="button" data-target="dash_bord">Dash Bord</button></li>
+                <li><button type="button" data-target="menu">Menu</button></li>
+            </ul>
+        </nav>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

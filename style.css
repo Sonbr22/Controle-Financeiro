@@ -1,0 +1,169 @@
+:root {
+    --primari: #07F2C1;
+    --secudaria: #4DF7FF;
+    --terciaria: #00A8FF;
+    --text: #fff;
+    --bagraund: #ffffff4d;
+    --primari2: #00C77F;
+    --secundaria2: #32E19F;
+    --fundobotao: #23df64;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+@keyframes fundo {
+    10% {
+        transform: translate(20%, 20%);
+    }
+
+    25% {
+        transform: translate(-20%, 20%);
+
+    }
+
+    40% {
+        transform: translate(-20%, -20%);
+
+    }
+
+    55% {
+        transform: translate(80%, 80%);
+
+    }
+
+    90% {
+        transform: translate(-20%, 80%);
+    }
+
+    95% {
+        transform: scale(3.5) tranlate;
+    }
+
+}
+
+body {
+    height: 100%;
+    background: linear-gradient(90deg, rgb(73, 71, 71), black)
+}
+
+/* Por padrão, todas as views estão completamente ocultas e não ocupam espaço */
+.view {
+  display: none;
+}
+
+/* A view ativa é exibida como um bloco e tem uma animação de entrada */
+.view.is-active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeIn 260ms ease-out;
+}
+
+
+.fundo_animação {
+    z-index: -999;
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 5% 10%, #838383 0%, transparent 60%),
+        radial-gradient(circle at 10% 20%, #767070 0%, transparent 60%),
+        radial-gradient(circle at 12% 12%, #998888 0%, transparent 60%);
+    filter: blur(100px);
+    animation: fundo 12s infinite alternate ease-in-out;
+}
+
+.dash_bord h1,
+.menuzinho {
+    border: 5px var(--primari2) dotted;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: var(--secudaria);
+    color: var(--terciaria)
+}
+
+.dados {
+    display: flex;
+}
+
+.dados,
+.elemento_dados {
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primari);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 5px;
+    background-color: var(--bagraund);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    flex-wrap: wrap;
+}
+
+
+footer {
+    background-color: var(--secudaria);
+    position: absolute;
+    width: 100%;
+    height: 68.8px;
+    bottom: 0;
+    left: 0;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+li {
+    margin: 20px;
+}
+
+footer button{
+    border: var(--terciaria) solid 3px;
+    background-color: var(--fundobotao);
+    border-radius: 10px;
+    padding: 4px;
+    color: var(--text);
+}
+
+.menuzinho{
+    display: flex;
+    justify-content: space-between;
+}
+.menuzinho select{
+    margin-right: 5%;
+    background: var(--fundobotao);
+    border: var(--terciaria) solid 3px;
+    border-radius: 10px;
+    color: var(--text);
+
+}
+
+/* Animação simples de entrada para a nova tela */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Esconde as sub-seções do menu por padrão */
+.menu-view {
+  display: none;
+}
+
+/* Mostra a sub-seção ativa */
+.menu-view.is-active {
+  display: block;
+}
