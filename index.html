@@ -37,25 +37,49 @@
         </section>
         <section data-view="menu" class="view">
             <header>
-            <div class="menuzinho">
-                <h1>Menu</h1>
-                <select name="select_menu">
-                    <option value="lancamentos" selected>Lançamentos</option>
-                    <option value="extras">Extras</option>
-                    <option value="assinaturas">Assinaturas</option>
-                </select>
-            </div>
+                <div class="menuzinho">
+                    <h1>Menu</h1>
+                    <select name="select_menu">
+                        <option value="lancamentos" selected>Lançamentos</option>
+                        <option value="extras">Extras</option>
+                        <option value="assinaturas">Assinaturas</option>
+                    </select>
+                </div>
             </header>
             <section data-menu-view="lancamentos" class="menu-view is-active">
                 Lançamentos
             </section>
             <section data-menu-view="extras" class="menu-view">
-                extras
+                <div class="dados_extra dados">
+                    <p class="elemento_dados">total a receber: R$:0,00</p>
+                    <p class="elemento_dados">total a pagar: R$:0,00</p>
+                    <p class="elemento_dados">total: R$:0,00</p>
+                    <button type="button">pagar todos</button>
+                </div>
+                <section class="form_Extra view">
+                    <form class="formulario_extra">
+                        <button type="button" class="close_form">X</button>
+                        <label for="nome_extra">descrição</label>
+                        <input type="text" id="nome_extra" name="nome" placeholder="Ex:Hora Extra" required>
+                        <label for="data_extra">data</label>
+                        <input type="date" id="data_extra" name="data" required>
+                        <label for="categoria">categoria</label>
+                        <select name="categorias" id="categorias" required>
+                            <option value=""></option>
+                        </select>
+                        <label for="valor_extra">valor</label>
+                        <input type="number" id="valor_extra" name="valor" required>
+                        <button type="submit">salvar</button>
+                    </form>
+                </section>
+                <section class="tabela_extra view">
+
+                </section>
             </section>
             <section data-menu-view="assinaturas" class="menu-view">
                 Assinaturas
             </section>
-        </section>
+            <button type="button" class="mais_extra">+</button>
     </main>
     <footer>
         <nav>

@@ -46,18 +46,31 @@
 
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 body {
     height: 100%;
     background: linear-gradient(90deg, rgb(73, 71, 71), black)
 }
 
-/* Por padrão, todas as views estão completamente ocultas e não ocupam espaço */
-.view {
+
+.view,
+.menu-view {
   display: none;
 }
 
-/* A view ativa é exibida como um bloco e tem uma animação de entrada */
-.view.is-active {
+
+.view.is-active,
+.menu-view.is-active {
   display: block;
   opacity: 1;
   transform: translateY(0);
@@ -85,14 +98,29 @@ body {
     color: var(--terciaria)
 }
 
-.dados {
+.menuzinho{
     display: flex;
+    justify-content: space-between;
+}
+.menuzinho select{
+    margin-right: 5%;
+    background: var(--fundobotao);
+    border: var(--terciaria) solid 3px;
+    border-radius: 10px;
+    color: var(--text);
+
+}
+
+.dados,
+.dados_extra {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .dados,
 .elemento_dados {
-    align-items: center;
-    justify-content: center;
     border: 2px solid var(--primari);
     border-radius: 10px;
     padding: 15px;
@@ -100,10 +128,108 @@ body {
     background-color: var(--bagraund);
     color: var(--text);
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
-    flex-wrap: wrap;
+    font-size: 10px;
+    
 }
 
+.dados_extra 
+button{
+    border: var(--terciaria) solid 3px;
+    background-color: var(--primari);
+    border-radius: 13px;
+    padding: 8px;
+    color: var(--text);
+
+}
+
+/* Classe para esconder o formulário */
+.form_Extra.form-is-hidden {
+    display: none;
+}
+
+/* Estilo do Modal do Formulário */
+.form_Extra.is-active {
+    position: fixed; /* Fica por cima de tudo */
+    top: 300%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    z-index: 1000; /* Garante que fique na frente */
+    border: 3px solid var(--terciaria);
+    background-color: #2c2c2c; /* Um fundo mais sólido para o modal */
+    border-radius: 10px;
+    padding: 25px;
+    color: var(--text);
+    display: block; /* Garante que seja visível quando 'is-active' */
+}
+
+/* Fundo desfocado */
+.form_Extra.is-active::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: -1; /* Fica atrás do formulário, mas na frente do resto */
+}
+
+.form_Extra .close_form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.formulario_extra {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os elementos do formulário */
+}
+
+.formulario_extra label {
+    font-weight: bold;
+    margin-bottom: -10px; /* Aproxima o rótulo do campo de entrada */
+}
+
+.formulario_extra input,
+.formulario_extra select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--terciaria);
+    border-radius: 8px;
+    background-color: #ffffffcc; /* Fundo branco semi-transparente */
+    color: #333; /* Cor do texto dentro do input */
+    box-sizing: border-box;
+}
+
+.formulario_extra button[type="submit"] {
+    padding: 12px;
+    border: 3px solid var(--terciaria);
+    background-color: var(--fundobotao);
+    border-radius: 10px;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.mais_extra {
+    position: fixed;
+    bottom: -300%; /* Posição acima do footer */
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--terciaria); /* Fundo azul */
+    font-size: 30px;
+    border: none;
+    z-index: 900;
+}
 
 footer {
     background-color: var(--secudaria);
@@ -131,39 +257,4 @@ footer button{
     border-radius: 10px;
     padding: 4px;
     color: var(--text);
-}
-
-.menuzinho{
-    display: flex;
-    justify-content: space-between;
-}
-.menuzinho select{
-    margin-right: 5%;
-    background: var(--fundobotao);
-    border: var(--terciaria) solid 3px;
-    border-radius: 10px;
-    color: var(--text);
-
-}
-
-/* Animação simples de entrada para a nova tela */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Esconde as sub-seções do menu por padrão */
-.menu-view {
-  display: none;
-}
-
-/* Mostra a sub-seção ativa */
-.menu-view.is-active {
-  display: block;
 }

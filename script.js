@@ -37,23 +37,30 @@ window.addEventListener('load', () => {
   }
 });
 
-/* --- LÓGICA PARA O SELECT DO MENU --- */
 const menuViewContainer = document.querySelector('[data-view="menu"]');
 const menuSelect = document.querySelector('select[name="select_menu"]');
+const openFormButton = document.querySelector('.mais_extra');
 
 function showMenuView(name) {
   const current = menuViewContainer.querySelector('.menu-view.is-active');
   const next = menuViewContainer.querySelector(`[data-menu-view="${name}"]`);
 
   if (current) current.classList.remove('is-active');
-  if (next) next.classList.add('is-active');
+  if (next) {
+    next.classList.add('is-active');
+    // Mostra ou esconde o botão '+'
+    if (name === 'extras') {
+      openFormButton.style.display = 'block';
+    } else {
+      openFormButton.style.display = 'none';
+    }
+  }
 }
 
 menuSelect.addEventListener('change', (ev) => {
   const selectedValue = ev.target.value;
   showMenuView(selectedValue);
 });
-/* --- FIM DA LÓGICA DO SELECT --- */
 
 function hideThenShow(current, next) {
   if (!current) {
@@ -71,3 +78,32 @@ function hideThenShow(current, next) {
   current.classList.remove('is-active');
 }
 allViews().forEach(v => v.setAttribute('aria-hidden', v.classList.contains('is-active') ? 'false' : 'true'));
+
+document.addEventListener('DOMContentLoaded', () => {
+  const formSection = document.querySelector('.form_Extra');
+  const closeFormButton = document.querySelector('.close_form');
+
+ 
+  if (formSection) {
+    formSection.classList.add('form-is-hidden');
+  }
+
+  // Esconde o botão '+' inicialmente, pois a view padrão não é 'extras'
+  openFormButton.style.display = 'none';
+
+  if (openFormButton && formSection) {
+    openFormButton.addEventListener('click', () => {
+      formSection.classList.remove('form-is-hidden');
+      formSection.classList.add('is-active');
+      openFormButton.style.display = 'none'; // Esconde o botão '+' ao abrir o form
+    });
+  }
+
+  if (closeFormButton && formSection) {
+    closeFormButton.addEventListener('click', () => {
+      formSection.classList.remove('is-active');
+      formSection.classList.add('form-is-hidden');
+      openFormButton.style.display = 'block'; // Reexibe o botão '+' ao fechar o form
+    });
+  }
+});
